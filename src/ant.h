@@ -8,11 +8,10 @@ typedef struct stack stack;
 struct node {
 	int x;
 	int y;
-	node* nextNode;
 };
 
 struct stack{
-	node* top;
+	node* array;
 	int count;
 	int maxSize;
 };
@@ -26,6 +25,8 @@ struct ant{
 };
 
 /* Stack related functions */
+
+stack* makeStack(int maxSize);
 
 node* pop(stack* s);
 node* peek(stack* s);
