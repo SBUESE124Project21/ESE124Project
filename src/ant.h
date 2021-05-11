@@ -1,3 +1,6 @@
+
+/* structs */
+
 typedef struct ant ant;
 typedef struct node node;
 typedef struct stack stack;
@@ -22,11 +25,15 @@ struct ant{
 	
 };
 
+/* Stack related functions */
+
 node* pop(stack* s);
 node* peek(stack* s);
 void push(node* n);
 void clear(stack* s);
 int empty(stack* s);
 int full(stack* s);
+
+/* Ant specific functions */
 
 

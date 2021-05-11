@@ -1,3 +1,6 @@
+
+/* Stack functions */
+
 node* pop(stack* s){
 	if(s->count > 0){
 		node* ptr = s->top;
@@ -30,3 +33,5 @@ int empty(stack* s){
 int full(stack* s){
 	return s->count >= s->maxSize;
 }
+
+/* Ant specific functions */
