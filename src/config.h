@@ -5,3 +5,4 @@
 #define Outside '@'
 
 #define MAX_SIZE 100
+#define MAX_ENERGY 100
