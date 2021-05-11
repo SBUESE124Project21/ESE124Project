@@ -47,5 +47,7 @@ int cwb(ant* a);
 int cwf(ant* a);
 
 int bjpi(ant* a);
-int cjpi(ant* a)
+int cjpi(ant* a);
+
+void backtrack(ant* a, int x, int y);
 
