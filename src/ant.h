@@ -21,7 +21,6 @@ struct ant{
 	stack* memoryStack;
 	int x;
 	int y;
-	
 };
 
 /* Stack related functions */
@@ -36,5 +35,17 @@ int empty(stack* s);
 int full(stack* s);
 
 /* Ant specific functions */
+void mark(ant* a);
+void move_f(ant* a);
+void move_b(ant* a);
+void move_l(ant* a);
+void move_r(ant* a);
 
+int cwl(ant* a);
+int cwr(ant* a);
+int cwb(ant* a);
+int cwf(ant* a);
+
+int bjpi(ant* a);
+int cjpi(ant* a)
 
