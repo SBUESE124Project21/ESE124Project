@@ -1,3 +1,6 @@
+#include "stack.h"
+#include <stdlib.h>
+
 stack* makeStack(int maxSize){
 	stack* s = (stack*)calloc(1, sizeof(stack));
 	s->array = (node*)calloc(maxSize, sizeof(node));
@@ -6,21 +9,15 @@ stack* makeStack(int maxSize){
 }
 
 node pop(stack* s){
-	if(s->count > 0){
-		s->count--;
-		return s->array[s->count];
-	}
-	return NULL;
+	s->count--;
+	return s->array[s->count];
 }
 
 node peek(stack* s){
-	if(s->count > 0){
-		return s->array[s->count-1];
-	}
-	return NULL;
+	return s->array[s->count-1];
 }
 
-void push(node n){
+void push(stack* s, node n){
 	s->array[s->count] = n;
 	s->count++;
 }

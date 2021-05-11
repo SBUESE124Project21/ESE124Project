@@ -39,3 +39,4 @@ int cjpi(ant* a);
 
 void backtrack(ant* a, int x, int y);
 
+
