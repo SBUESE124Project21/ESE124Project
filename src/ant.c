@@ -40,4 +40,4 @@ int full(stack* s){
 	return s->count >= s->maxSize;
 }
 
-/* Ant specific functions */
+/* Ant specific functions (unimplemented)*/
