@@ -1,0 +1,8 @@
+*.exe
+*.dll
+*.lib
+*.cfg
+*.res
+*.o
+*.layout
+*.local
