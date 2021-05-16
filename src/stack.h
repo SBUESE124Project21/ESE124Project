@@ -20,4 +20,4 @@ void spush(stack* s, node n);
 void sclear(stack* s);
 int sempty(stack* s);
 int sfull(stack* s);
-
+void freeStack(stack* s);

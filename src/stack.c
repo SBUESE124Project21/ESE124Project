@@ -35,3 +35,7 @@ int sfull(stack* s){
 	return s->count >= s->maxSize;
 }
 
+void freeStack(stack* s){
+	free(s->array);
+	free(s);
+}
