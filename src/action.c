@@ -7,6 +7,7 @@ char* stringToUpper(char* str){
 	}
 	return str;
 }
+
 int convertAction(char* actionstr){
 	char* actions[] = {
 		"MARK",
