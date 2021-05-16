@@ -77,6 +77,9 @@ int cwf(map* m, ant* a){	//right
 	a->lastCheckDirection = DIR_RIGHT;
 	while(1){
 		int nval = getMapData(m, a->currentPosition.x+positions, a->currentPosition.y);
+		if(nval == TILE_OUTSIDE){
+			return 0;
+		}
 		if(nval == TILE_WALL || nval == TILE_PHEROMONE){
 			a->itchRight = positions-1;
 			return positions-1;
@@ -89,6 +92,9 @@ int cwb(map* m, ant* a){	//left
 	a->lastCheckDirection = DIR_LEFT;
 	while(1){
 		int nval = getMapData(m, a->currentPosition.x-positions, a->currentPosition.y);
+		if(nval == TILE_OUTSIDE){
+			return 0;
+		}
 		if(nval == TILE_WALL || nval == TILE_PHEROMONE){
 			a->itchRight = positions-1;
 			return positions-1;
@@ -101,6 +107,9 @@ int cwl(map* m, ant* a){	//up
 	a->lastCheckDirection = DIR_UP;
 	while(1){
 		int nval = getMapData(m, a->currentPosition.x, a->currentPosition.y+positions);
+		if(nval == TILE_OUTSIDE){
+			return 0;
+		}
 		if(nval == TILE_WALL || nval == TILE_PHEROMONE){
 			a->itchRight = positions-1;
 			return positions-1;
@@ -113,6 +122,9 @@ int cwr(map* m, ant* a){	//down
 	a->lastCheckDirection = DIR_DOWN;
 	while(1){
 		int nval = getMapData(m, a->currentPosition.x, a->currentPosition.y-positions);
+		if(nval == TILE_OUTSIDE){
+			return 0;
+		}
 		if(nval == TILE_WALL || nval == TILE_PHEROMONE){
 			a->itchRight = positions-1;
 			return positions-1;

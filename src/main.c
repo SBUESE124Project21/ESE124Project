@@ -35,6 +35,10 @@ int main(int argc, char *argv[]) {
 	map* map = loadMap(mapFile);
 	instructionset* instr = loadInstructionSet(intelligenceFile, 512);
 	node startPosition = getStartPosition(m);
+	if(startPosition.x < 0 || startposition).y < 0){
+		printf("Failed to find open space in wall as start position.");
+		exit(1);
+	}
 	ant* a = makeAnt(startPosition->x, startPosition->y, MAX_ENERGY);
 	
 	//close files no longer necessary
@@ -45,13 +49,33 @@ int main(int argc, char *argv[]) {
 	while(instr->position < instr->count && ){	//until the end of the instruction set
 		getNextInstruction(instr, instruction);	//read the next instruction into instruction string
 		
-		int action = convertAction(instruction);
+		int action = convertAction(instruction); //convert the string to an int
 		
-		if(action == C_RP){
-			
+		if(action == C_RP){						// if its RP n t, then deal with it separately
+			int j,k;
+			char s[10];
+			int n;
+			int t;
+			int cpos = instr->position;
+			int epos;
+			sscanf(instruction, "%s %d %d", s, &n, &t);	// read the n and t values from the instruction
+			for(k = 0; k < t; k++){						// t times
+				for(j = 0; j < n; j++){					//execute the next n instructions
+					getNextInstruction(instr, instruction);	//get the instruction
+					action = convertAction(instruction);	//convert it
+					if(action == -1){
+						fprintf(outputFile, "Error: Illegal action number %d: '%s'.", instr->position, instruction);
+						exit(1);
+					}
+					executeAction(map, a, action);			//execute the action
+				}
+				epos = instr->position;					//save the end position so if this is the last loop, we dont end up repeating things one too many times.
+				instr->position = cpos;					//reset the position back to just after the RP to repeat again
+			}
+			instr->position = epos;
 		}
 		else{
-			execute
+			executeAction(map, a, action);				//execute the action if its not rp
 		}
 		
 	}

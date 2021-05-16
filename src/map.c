@@ -31,6 +31,27 @@ void freeMap(map* m){
 }
 
 
+node getStartPosition(map* m){
+	int x = 0;
+	int y = 0;
+	
+	node a;
+	a.x = -1;
+	a.y = -1;
+	for(y = 0; y < m->height; y++){
+		for(x = 0; x < m->width; x++){
+			if((x == 0 || x == m->width - 1) || (y==0 || y ==m->height-1)){
+				if(getMapData(m, x, y) == TILE_SPACE){
+					a.x = x;
+					a.y = y;
+					return a;
+				}
+			}	
+		}
+	}
+	return a;
+}
+
 map* loadMap(FILE* mapfile){
 	char* buf = (char*)calloc(MAX_BUFFERSIZE, sizeof(char));
 	
