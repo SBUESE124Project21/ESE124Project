@@ -1,4 +1,5 @@
 #include "ant.h"
+#include <stdlib.h>
 
 ant* makeAnt(int x, int y, int energy)
 {
