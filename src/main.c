@@ -34,19 +34,19 @@ int main(int argc, char *argv[]) {
 	//Load map and instructions
 	map* map = loadMap(mapFile);
 	instructionset* instr = loadInstructionSet(intelligenceFile, 512);
-	node startPosition = getStartPosition(m);
-	if(startPosition.x < 0 || startposition).y < 0){
+	node startPosition = getStartPosition(map);
+	if(startPosition.x < 0 || startPosition.y < 0){
 		printf("Failed to find open space in wall as start position.");
 		exit(1);
 	}
-	ant* a = makeAnt(startPosition->x, startPosition->y, MAX_ENERGY);
+	ant* a = makeAnt(startPosition.x, startPosition.y, MAX_ENERGY);
 	
 	//close files no longer necessary
 	fclose(mapFile);
 	fclose(intelligenceFile);
 	
 	char* instruction = (char*)calloc(MAX_BUFFERSIZE, sizeof(char));	//string to hold instruction
-	while(instr->position < instr->count && ){	//until the end of the instruction set
+	while(instr->position < instr->count && isAlive(a)){	//until the end of the instruction set
 		getNextInstruction(instr, instruction);	//read the next instruction into instruction string
 		
 		int action = convertAction(instruction); //convert the string to an int
