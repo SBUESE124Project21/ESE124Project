@@ -17,6 +17,14 @@
 #define MAX_SIZE 100
 #define MAX_ENERGY 100
 
+#define MARK_ENERGY 3
+#define MOVE_ENERGY 3
+#define CHECK_ENERGY 1
+#define PUSH_POP_ENERGY 4
+#define PEEK_CLEAR_ENERGY 2
+#define BJPI_ENERGY 5
+#define CJPI_ENERGY 3
+
 #define C_MARK 0
 #define C_MOVE_F 1
 #define C_MOVE_B 2
