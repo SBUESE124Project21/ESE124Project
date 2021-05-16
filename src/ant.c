@@ -14,6 +14,9 @@ void freeAnt(ant* a){
 	free(a);
 }
 
+int isAlive(ant* a){
+	return a->energy > 0;
+}
 
 node pop(ant* a){
 	a->memoryPosition = spop(a->memoryStack);
