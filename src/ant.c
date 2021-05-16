@@ -58,6 +58,7 @@ void move_r(ant* a){
 
 int cwf(map* m, ant* a){	//right
 	int positions = 1;
+	a->lastCheckDirection = DIR_RIGHT;
 	while(1){
 		int nval = getMapData(m, a->currentPosition.x+positions, a->currentPosition.y);
 		if(nval == TILE_WALL || nval == TILE_PHEROMONE){
@@ -69,6 +70,7 @@ int cwf(map* m, ant* a){	//right
 }
 int cwb(map* m, ant* a){	//left
 	int positions = 1;
+	a->lastCheckDirection = DIR_LEFT;
 	while(1){
 		int nval = getMapData(m, a->currentPosition.x-positions, a->currentPosition.y);
 		if(nval == TILE_WALL || nval == TILE_PHEROMONE){
@@ -80,6 +82,7 @@ int cwb(map* m, ant* a){	//left
 }
 int cwl(map* m, ant* a){	//up
 	int positions = 1;
+	a->lastCheckDirection = DIR_UP;
 	while(1){
 		int nval = getMapData(m, a->currentPosition.x, a->currentPosition.y+positions);
 		if(nval == TILE_WALL || nval == TILE_PHEROMONE){
@@ -91,6 +94,7 @@ int cwl(map* m, ant* a){	//up
 }
 int cwr(map* m, ant* a){	//down
 	int positions = 1;
+	a->lastCheckDirection = DIR_DOWN;
 	while(1){
 		int nval = getMapData(m, a->currentPosition.x, a->currentPosition.y-positions);
 		if(nval == TILE_WALL || nval == TILE_PHEROMONE){

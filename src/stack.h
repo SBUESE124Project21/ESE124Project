@@ -1,3 +1,4 @@
+#pragma once
 typedef struct node node;
 typedef struct stack stack;
 

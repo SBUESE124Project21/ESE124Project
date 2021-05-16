@@ -12,7 +12,6 @@
 
 typedef struct ant ant;
 
-
 struct ant{
 	stack* memoryStack;
 
@@ -28,6 +27,7 @@ struct ant{
 	int itchLeft;
 	
 	int consumedEnergy;
+	int lastCheckDirection; // last direction checked
 };
 
 /* Helper functions */
