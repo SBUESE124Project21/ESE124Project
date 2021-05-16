@@ -14,8 +14,8 @@ typedef struct ant ant;
 struct ant{
 	stack* memoryStack;
 
-	int x, y;	// current position
-	int mx, my; // memory position
+	node currentPosition;	// current position
+	node memoryPosition; // memory position
 	
 	
 	int energy; //energy remaining

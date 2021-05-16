@@ -1,13 +1,13 @@
 #include "ant.h"
 
 node pop(ant* a){
-	return spop(a->memoryStack);
+	return a->memoryPosition = spop(a->memoryStack);
 }
 node peek(ant* a){
-	return speek(a->memoryStack);
+	return a->currentPosition = speek(a->memoryStack);
 }
-void push(ant* a, node n){
-	spush(a->memoryStack, n);
+void push(ant* a){
+	spush(a->memoryStack, a->currentPosition);
 }
 void clear(ant* a){
 	sclear(a->memoryStack);
@@ -19,7 +19,6 @@ int full(ant* a){
 	return sfull(a->memoryStack);
 }
 
-
 void move_f(ant* a){
 	//right
 	a->x++;
@@ -27,13 +26,16 @@ void move_f(ant* a){
 }
 void move_b(ant* a){
 	//left
-	
+	a->x--;
+	a->energy -= MOVE_ENERGY;
 }
 void move_l(ant* a){
 	//up
-	
+	a->y--;
+	a->energy -= MOVE_ENERGY;
 }
 void move_r(ant* a){
 	//down
-	
+	a->y++;
+	a->energy -= MOVE_ENERGY;
 }
