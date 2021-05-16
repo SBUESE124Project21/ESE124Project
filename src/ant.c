@@ -105,7 +105,7 @@ int cwr(map* m, ant* a){	//down
 	}
 }
 
-int bjpi(map* m, ant* a){
+int bjpi(ant* a){
 	switch(a->lastCheckDirection){
 		case DIR_RIGHT:
 			if(a->itchRight > 0){
@@ -118,7 +118,7 @@ int bjpi(map* m, ant* a){
 			break;
 		case DIR_LEFT:
 			if(a->itchRight > 0){
-				a->currentPosition.x -= a->itchRight;
+				a->currentPosition.x -= a->itchLeft;
 				a->itchRight = 0; 
 				a->energy -= BJPI_ENERGY;
 				return 1;
@@ -127,7 +127,7 @@ int bjpi(map* m, ant* a){
 			break;
 		case DIR_UP:
 			if(a->itchRight > 0){
-				a->currentPosition.y -= a->itchRight;
+				a->currentPosition.y -= a->itchUp;
 				a->itchRight = 0; 
 				a->energy -= BJPI_ENERGY;
 				return 1;
@@ -136,7 +136,50 @@ int bjpi(map* m, ant* a){
 			break;
 		case DIR_DOWN:
 			if(a->itchRight > 0){
-				a->currentPosition.y += a->itchRight;
+				a->currentPosition.y += a->itchDown;
+				a->itchRight = 0; 
+				a->energy -= BJPI_ENERGY;
+				return 1;
+			}
+			return 0;
+			break;
+		default:
+			break;
+	}
+}
+
+int cjpi(ant* a){
+	switch(a->lastCheckDirection){
+		case DIR_RIGHT:
+			if(a->itchRight > 0){
+				a->currentPosition.x += 1;
+				a->itchRight = 0; 
+				a->energy -= BJPI_ENERGY;
+				return 1;
+			}
+			return 0;
+			break;
+		case DIR_LEFT:
+			if(a->itchRight > 0){
+				a->currentPosition.x -= 1;
+				a->itchRight = 0; 
+				a->energy -= BJPI_ENERGY;
+				return 1;
+			}
+			return 0;
+			break;
+		case DIR_UP:
+			if(a->itchRight > 0){
+				a->currentPosition.y -= 1;
+				a->itchRight = 0; 
+				a->energy -= BJPI_ENERGY;
+				return 1;
+			}
+			return 0;
+			break;
+		case DIR_DOWN:
+			if(a->itchRight > 0){
+				a->currentPosition.y += 1;
 				a->itchRight = 0; 
 				a->energy -= BJPI_ENERGY;
 				return 1;
