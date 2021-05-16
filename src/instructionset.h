@@ -1,4 +1,6 @@
 #pragma once
+#include <stdio.h>
+
 typedef struct instructionset instructionset;
 
 struct instructionset{
@@ -8,9 +10,10 @@ struct instructionset{
 	int maxCount;
 };
 
-instructionset* createInstructionset(int maxCount);
+instructionset* makeInstructionset(int maxCount);
+instructionset* loadInstructionSet(FILE* instructionFile, int max);
 void freeInstructionset(instructionset* i);
-void addInstruction(char* instruction);
+void addInstruction(instructionset* i, char* instruction);
 char* getNextInstruction(instructionset* i, char* buf);
 void rewindInstructionset(instructionset* i, int d);
 
