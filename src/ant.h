@@ -33,6 +33,7 @@ struct ant{
 /* Helper functions */
 ant* makeAnt(int x, int y, int energy);
 void freeAnt(ant* a);
+int isAlive(ant* a);
 
 /* Ant specific functions */
 
@@ -50,7 +51,7 @@ int cwr(map* m, ant* a);
 int bjpi(ant* a);
 int cjpi(ant* a);
 
-void backtrack(ant* a, int x, int y);
+void backtrack(ant* a);
 
 /* Stack functions */
 node pop(ant* a);

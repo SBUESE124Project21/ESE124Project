@@ -16,15 +16,21 @@ void freeAnt(ant* a){
 
 
 node pop(ant* a){
-	return a->memoryPosition = spop(a->memoryStack);
+	a->memoryPosition = spop(a->memoryStack);
+	a->energy -= PUSH_POP_ENERGY;
+	return a->memoryPosition;
 }
 node peek(ant* a){
-	return a->currentPosition = speek(a->memoryStack);
+	a->memoryPosition = speek(a->memoryStack);
+	a->energy -= PEEK_CLEAR_ENERGY;
+	return a->memoryPosition;
 }
 void push(ant* a){
+	a->energy -= PUSH_POP_ENERGY;
 	spush(a->memoryStack, a->currentPosition);
 }
 void clear(ant* a){
+	a->energy -= PEEK_CLEAR_ENERGY;
 	sclear(a->memoryStack);
 }
 int empty(ant* a){
@@ -197,6 +203,11 @@ int cjpi(ant* a){
 		default:
 			break;
 	}
+}
+
+
+void backtrack(ant* a){
+	a->currentPosition = a->memoryPosition;
 }
 
 void mark(map* m, ant* a){
