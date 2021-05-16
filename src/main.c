@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "ant.h"
 #include "config.h"
+#include "instructionset.h"
+#include "action.h"
 
 #define MAPFILENAME "mapfile.txt"
 #define INTELLIGENCEFILENAME "intelligencefile.txt"
@@ -27,6 +29,17 @@ int main(int argc, char *argv[]) {
 	if((outputFile = fopen(OUTPUTFILENAME, "w")) == NULL){
 		printf("Failed to open output file, '%s'", OUTPUTFILENAME);
 		exit(1);
+	}
+	
+	map* map = loadMap(mapFile);
+	instructionset* instr = loadInstructionSet(intelligenceFile, 512);
+	
+	char* instruction = (char*)calloc(MAX_BUFFERSIZE, sizeof(char));
+	while(instr->position < instr->count){
+		
+		
+		
+		
 	}
 	
 	

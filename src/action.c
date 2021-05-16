@@ -1,5 +1,5 @@
 #include "action.h"
-
+#include <string.h>
 char* stringToUpper(char* str){
 	int i = 0;
 	for(i = 0; i < strlen(str); i++){
@@ -50,20 +50,20 @@ int executeAction(map* m, ant* a, int action){
 			break;
 		case C_MOVE_B:
 			move_b(m,a);
-			break
+			break;
 		case C_MOVE_L:
 			move_l(m,a);
 			break;
 		case C_MOVE_R:
 			move_r(m,a);
-			break
+			break;
 		case C_CWF:
 			cwf(m,a);
 			break;
 		case C_CWB:
 			cwb(m,a);
 			break;
-		case C_CWl:
+		case C_CWL:
 			cwl(m,a);
 			break;
 		case C_CWR:

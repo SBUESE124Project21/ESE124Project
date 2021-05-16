@@ -1,7 +1,9 @@
 #include "instructionset.h"
-
+#include "config.h"
+#include <string.h>
+#include <stdlib.h>
 instructionset* makeInstructionset(int maxCount){
-	(instructionset*) ins = (instructionset*)calloc(1, sizeof(instructionset));
+	instructionset* ins = (instructionset*)calloc(1, sizeof(instructionset));
 	ins->instructions = (char**)calloc(maxCount, sizeof(char*));
 	ins->count = 0;
 	ins->maxCount = maxCount;
@@ -12,7 +14,7 @@ instructionset* makeInstructionset(int maxCount){
 instructionset* loadInstructionSet(FILE* instructionFile, int max){
 	instructionset* ins = makeInstructionset(max);
 	char* buf = (char*)calloc(MAX_BUFFERSIZE, sizeof(char));
-	while(ins->count < ins->maxCount && fgets(buf, MAX_BUFFERSIZE, mapfile) != NULL){
+	while(ins->count < ins->maxCount && fgets(buf, MAX_BUFFERSIZE, instructionFile) != NULL){
 		addInstruction(ins, buf);
 	}
 	return ins;

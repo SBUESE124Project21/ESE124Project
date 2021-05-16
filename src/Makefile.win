@@ -4,8 +4,8 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = ant.o main.o stack.o map.o
-LINKOBJ  = ant.o main.o stack.o map.o
+OBJ      = ant.o main.o stack.o map.o action.o instructionset.o
+LINKOBJ  = ant.o main.o stack.o map.o action.o instructionset.o
 LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
 INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -35,3 +35,9 @@ stack.o: stack.c
 
 map.o: map.c
 	$(CC) -c map.c -o map.o $(CFLAGS)
+
+action.o: action.c
+	$(CC) -c action.c -o action.o $(CFLAGS)
+
+instructionset.o: instructionset.c
+	$(CC) -c instructionset.c -o instructionset.o $(CFLAGS)

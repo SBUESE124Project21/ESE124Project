@@ -1,3 +1,4 @@
+#pragma once
 #include "stack.h"
 #include <stdio.h>
 typedef struct map map;
