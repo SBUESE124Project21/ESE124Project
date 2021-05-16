@@ -33,7 +33,7 @@ struct ant{
 
 /* Ant specific functions */
 
-void mark(ant* a);
+void mark(map* m, ant* a);
 void move_f(ant* a);	//right
 void move_b(ant* a);	//left
 void move_l(ant* a);	//up

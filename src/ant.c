@@ -101,3 +101,7 @@ int cwr(map* m, ant* a){	//down
 		positions++;
 	}
 }
+
+void mark(map* m, ant* a){
+	setMapData(m, a->currentPosition.x, a->currentPosition.y, TILE_PHEROMONE);
+}
