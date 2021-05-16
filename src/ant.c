@@ -59,14 +59,10 @@ void move_r(ant* a){
 int cwf(map* m, ant* a){	//right
 	int positions = 1;
 	while(1){
-		int nval = getMapData(m, a->currentPosition.x+positions-1, a->currentPosition.y);
-		if(nval == TILE_WALL){
+		int nval = getMapData(m, a->currentPosition.x+positions, a->currentPosition.y);
+		if(nval == TILE_WALL || nval == TILE_PHEROMONE){
 			a->itchRight = positions-1;
 			return positions-1;
-		}
-		else if(nval == TILE_PHEROMONE){
-			a->itchRight = 0;
-			return 0;
 		}
 		positions++;
 	}
@@ -74,14 +70,10 @@ int cwf(map* m, ant* a){	//right
 int cwb(map* m, ant* a){	//left
 	int positions = 1;
 	while(1){
-		int nval = getMapData(m, a->currentPosition.x-positions+1, a->currentPosition.y);
-		if(nval == TILE_WALL){
-			a->itchLeft = positions-1;
+		int nval = getMapData(m, a->currentPosition.x-positions, a->currentPosition.y);
+		if(nval == TILE_WALL || nval == TILE_PHEROMONE){
+			a->itchRight = positions-1;
 			return positions-1;
-		}
-		else if(nval == TILE_PHEROMONE){
-			a->itchLeft = 0;
-			return 0;
 		}
 		positions++;
 	}
@@ -89,14 +81,10 @@ int cwb(map* m, ant* a){	//left
 int cwl(map* m, ant* a){	//up
 	int positions = 1;
 	while(1){
-		int nval = getMapData(m, a->currentPosition.x, a->currentPosition.y+positions-1);
-		if(nval == TILE_WALL){
-			a->itchUp = positions-1;
+		int nval = getMapData(m, a->currentPosition.x, a->currentPosition.y+positions);
+		if(nval == TILE_WALL || nval == TILE_PHEROMONE){
+			a->itchRight = positions-1;
 			return positions-1;
-		}
-		else if(nval == TILE_PHEROMONE){
-			a->itchUp = 0;
-			return 0;
 		}
 		positions++;
 	}
@@ -104,14 +92,10 @@ int cwl(map* m, ant* a){	//up
 int cwr(map* m, ant* a){	//down
 	int positions = 1;
 	while(1){
-		int nval = getMapData(m, a->currentPosition.x, a->currentPosition.y-positions+1);
-		if(nval == TILE_WALL){
-			a->itchDown = positions-1;
+		int nval = getMapData(m, a->currentPosition.x, a->currentPosition.y-positions);
+		if(nval == TILE_WALL || nval == TILE_PHEROMONE){
+			a->itchRight = positions-1;
 			return positions-1;
-		}
-		else if(nval == TILE_PHEROMONE){
-			a->itchDown = 0;
-			return 0;
 		}
 		positions++;
 	}

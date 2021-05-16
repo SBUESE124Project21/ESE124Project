@@ -26,6 +26,8 @@ struct ant{
 	int itchDown;
 	int itchRight;
 	int itchLeft;
+	
+	int consumedEnergy;
 };
 
 /* Helper functions */
