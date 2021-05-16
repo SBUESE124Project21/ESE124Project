@@ -1,3 +1,4 @@
+#pragma once
 #include "stack.h"
 #include "config.h"
 #include "map.h"
@@ -26,8 +27,6 @@ struct ant{
 ant* makeAnt(int x, int y, int energy);
 void freeAnt(ant* a);
 int isAlive(ant* a);
-char* stringToUpper(char* str);
-int convertAction(char* command);
 
 /* Ant specific functions */
 
