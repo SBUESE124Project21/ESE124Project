@@ -17,7 +17,7 @@ stack* makeStack(int maxSize);
 
 node spop(stack* s);
 node speek(stack* s);
-void spush(stack* s, node n);
+int spush(stack* s, node n);
 void sclear(stack* s);
 int sempty(stack* s);
 int sfull(stack* s);

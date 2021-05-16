@@ -10,17 +10,27 @@ stack* makeStack(int maxSize){
 }
 
 node spop(stack* s){
-	s->count--;
-	return s->array[s->count];
+	if(s->count > 0){
+		s->count--;
+		return s->array[s->count];
+	}
+	else{
+		node n;
+		return n;
+	}
 }
 
 node speek(stack* s){
 	return s->array[s->count-1];
 }
 
-void spush(stack* s, node n){
-	s->array[s->count] = n;
-	s->count++;
+int spush(stack* s, node n){
+	if(s->count < s->maxSize){
+		s->array[s->count] = n;
+		s->count++;
+		return 1;
+	}	
+	return 0;
 }
 
 void sclear(stack* s){
