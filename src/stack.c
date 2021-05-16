@@ -6,31 +6,32 @@ stack* makeStack(int maxSize){
 	s->array = (node*)calloc(maxSize, sizeof(node));
 	s->maxSize = maxSize;
 	s->count = 0;
+	return s;
 }
 
-node pop(stack* s){
+node spop(stack* s){
 	s->count--;
 	return s->array[s->count];
 }
 
-node peek(stack* s){
+node speek(stack* s){
 	return s->array[s->count-1];
 }
 
-void push(stack* s, node n){
+void spush(stack* s, node n){
 	s->array[s->count] = n;
 	s->count++;
 }
 
-void clear(stack* s){
+void sclear(stack* s){
 	while(s->count > 0){
 		pop(s);
 	}
 }
-int empty(stack* s){
+int sempty(stack* s){
 	return s->count == 0;
 }
-int full(stack* s){
+int sfull(stack* s){
 	return s->count >= s->maxSize;
 }
 

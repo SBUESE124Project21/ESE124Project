@@ -1,5 +1,13 @@
 #include "stack.h"
 
+#define MARK_ENERGY 3
+#define MOVE_ENERGY 3
+#define CHECK_ENERGY 1
+#define PUSH_POP_ENERGY 4
+#define PEEK_CLEAR_ENERGY 2
+#define BJPI_ENERGY 5
+#define CJPI_ENERGY 3
+
 typedef struct ant ant;
 
 
@@ -39,4 +47,10 @@ int cjpi(ant* a);
 
 void backtrack(ant* a, int x, int y);
 
-
+/* Stack functions */
+node pop(ant* a);
+node peek(ant* a);
+void push(ant* a, node n);
+void clear(ant* a);
+int empty(ant* a);
+int full(ant* a);

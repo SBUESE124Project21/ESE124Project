@@ -1,7 +1,6 @@
 typedef struct node node;
 typedef struct stack stack;
 
-
 struct node {
 	int x;
 	int y;
@@ -15,10 +14,10 @@ struct stack{
 
 stack* makeStack(int maxSize);
 
-node pop(stack* s);
-node peek(stack* s);
-void push(stack* s, node n);
-void clear(stack* s);
-int empty(stack* s);
-int full(stack* s);
+node spop(stack* s);
+node speek(stack* s);
+void spush(stack* s, node n);
+void sclear(stack* s);
+int sempty(stack* s);
+int sfull(stack* s);
 
