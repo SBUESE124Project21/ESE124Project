@@ -8,7 +8,7 @@
 #define TILE_SPACE ' '
 #define TILE_WALL '*'
 #define TILE_GOLD '@'
-#define TILE_PHEROMONE '?'
+#define TILE_PHEROMONE 'p'
 #define TILE_OUTSIDE '_'
 
 #define MAX_STACKSIZE 100
