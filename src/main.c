@@ -46,7 +46,8 @@ int main(int argc, char *argv[]) {
 	fclose(intelligenceFile);
 	
 	char* instruction = (char*)calloc(MAX_BUFFERSIZE, sizeof(char));	//string to hold instruction
-	while(instr->position < instr->count && isAlive(a)){	//until the end of the instruction set
+	while((instr->position < instr->count) && isAlive(a)){	//until the end of the instruction set
+		printf("running instr\n");
 		getNextInstruction(instr, instruction);	//read the next instruction into instruction string
 		
 		int action = convertAction(instruction); //convert the string to an int

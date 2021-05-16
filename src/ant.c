@@ -44,36 +44,36 @@ int full(ant* a){
 
 void move_f(map* m, ant* a){
 	//right
+	a->energy -= MOVE_ENERGY;
 	if(a->currentPosition.x < m->width-1){
 		a->currentPosition.x++;
-		a->energy -= MOVE_ENERGY;
 	}
 }
 void move_b(map* m, ant* a){
 	//left
+	a->energy -= MOVE_ENERGY;
 	if(a->currentPosition.x > 1){
 		a->currentPosition.x--;
-		a->energy -= MOVE_ENERGY;
 	}
 }
 void move_l(map* m, ant* a){
 	//up
-	
+	a->energy -= MOVE_ENERGY;
 	if(a->currentPosition.y < m->height-1){
 		a->currentPosition.y--;
-		a->energy -= MOVE_ENERGY;
 	}
 }
 void move_r(map* m, ant* a){
 	//down
+	a->energy -= MOVE_ENERGY;
 	if(a->currentPosition.y>1){
 		a->currentPosition.y++;
-		a->energy -= MOVE_ENERGY;
 	}
 }
 
 int cwf(map* m, ant* a){	//right
 	int positions = 1;
+	a->energy -= CHECK_ENERGY;
 	a->lastCheckDirection = DIR_RIGHT;
 	while(1){
 		int nval = getMapData(m, a->currentPosition.x+positions, a->currentPosition.y);
@@ -89,6 +89,7 @@ int cwf(map* m, ant* a){	//right
 }
 int cwb(map* m, ant* a){	//left
 	int positions = 1;
+	a->energy -= CHECK_ENERGY;
 	a->lastCheckDirection = DIR_LEFT;
 	while(1){
 		int nval = getMapData(m, a->currentPosition.x-positions, a->currentPosition.y);
@@ -104,6 +105,7 @@ int cwb(map* m, ant* a){	//left
 }
 int cwl(map* m, ant* a){	//up
 	int positions = 1;
+	a->energy -= CHECK_ENERGY;
 	a->lastCheckDirection = DIR_UP;
 	while(1){
 		int nval = getMapData(m, a->currentPosition.x, a->currentPosition.y+positions);
@@ -119,6 +121,7 @@ int cwl(map* m, ant* a){	//up
 }
 int cwr(map* m, ant* a){	//down
 	int positions = 1;
+	a->energy -= CHECK_ENERGY;
 	a->lastCheckDirection = DIR_DOWN;
 	while(1){
 		int nval = getMapData(m, a->currentPosition.x, a->currentPosition.y-positions);
