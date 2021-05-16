@@ -45,14 +45,14 @@ int full(ant* a){
 
 void move_f(map* m, ant* a){
 	//right
-	if(x < m->width-1){
+	if(a->currentPosition.x < m->width-1){
 		a->currentPosition.x++;
 		a->energy -= MOVE_ENERGY;
 	}
 }
 void move_b(map* m, ant* a){
 	//left
-	if(x > 1){
+	if(a->currentPosition.x > 1){
 		a->currentPosition.x--;
 		a->energy -= MOVE_ENERGY;
 	}
@@ -60,14 +60,14 @@ void move_b(map* m, ant* a){
 void move_l(map* m, ant* a){
 	//up
 	
-	if(y < m->height-1){
+	if(a->currentPosition.y < m->height-1){
 		a->currentPosition.y--;
 		a->energy -= MOVE_ENERGY;
 	}
 }
 void move_r(map* m, ant* a){
 	//down
-	if(y>1){
+	if(a->currentPosition.y>1){
 		a->currentPosition.y++;
 		a->energy -= MOVE_ENERGY;
 	}
