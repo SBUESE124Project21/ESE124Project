@@ -20,8 +20,14 @@ node spop(stack* s){
 	}
 }
 
-node speek(stack* s){
-	return s->array[s->count-1];
+node speek(stack* s){	
+	if(s->count > 0){
+		return s->array[s->count-1];
+	}
+	else{
+		node n;
+		return n;
+	}
 }
 
 int spush(stack* s, node n){
