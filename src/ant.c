@@ -21,22 +21,75 @@ int full(ant* a){
 
 void move_f(ant* a){
 	//right
-	a->currentPosition->x++;
+	a->currentPosition.x++;
 	a->energy -= MOVE_ENERGY;
 }
 void move_b(ant* a){
 	//left
-	a->currentPosition->x--;
+	a->currentPosition.x--;
 	a->energy -= MOVE_ENERGY;
 }
 void move_l(ant* a){
 	//up
-	a->currentPosition->y--;
+	a->currentPosition.y--;
 	a->energy -= MOVE_ENERGY;
 }
 void move_r(ant* a){
 	//down
-	a->currentPosition->y++;
+	a->currentPosition.y++;
 	a->energy -= MOVE_ENERGY;
 }
 
+
+int cwf(map* m, ant* a){	//right
+	int positions = 1;
+	while(1){
+		int nval = getMapData(m, a->currentPosition.x+positions-1, a->currentPosition.y);
+		if(nval == TILE_WALL){
+			return positions-1;
+		}
+		else if(nval == TILE_PHEROMONE){
+			return 0;
+		}
+		positions++;
+	}
+}
+int cwb(map* m, ant* a){	//right
+	int positions = 1;
+	while(1){
+		int nval = getMapData(m, a->currentPosition.x-positions+1, a->currentPosition.y);
+		if(nval == TILE_WALL){
+			return positions-1;
+		}
+		else if(nval == TILE_PHEROMONE){
+			return 0;
+		}
+		positions++;
+	}
+}
+int cwl(map* m, ant* a){	//up
+	int positions = 1;
+	while(1){
+		int nval = getMapData(m, a->currentPosition.x, a->currentPosition.y+positions-1);
+		if(nval == TILE_WALL){
+			return positions-1;
+		}
+		else if(nval == TILE_PHEROMONE){
+			return 0;
+		}
+		positions++;
+	}
+}
+int cwr(map* m, ant* a){	//down
+	int positions = 1;
+	while(1){
+		int nval = getMapData(m, a->currentPosition.x, a->currentPosition.y-positions+1);
+		if(nval == TILE_WALL){
+			return positions-1;
+		}
+		else if(nval == TILE_PHEROMONE){
+			return 0;
+		}
+		positions++;
+	}
+}
