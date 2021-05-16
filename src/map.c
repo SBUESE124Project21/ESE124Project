@@ -1,5 +1,6 @@
 #include "map.h"
 #include <stdlib.h>
+
 map* makeMap(int width, int height){
 	map* m = (map*)calloc(1, sizeof(map));
 	
@@ -25,7 +26,6 @@ void freeMap(map* m){
 	free(m->data);
 	free(m);
 }
-
 
 int getMapData(map* m, int x, int y){
 	if(x > 0 && y > 0 && x < m->width && y < m->height){

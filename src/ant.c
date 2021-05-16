@@ -1,8 +1,7 @@
 #include "ant.h"
 #include <stdlib.h>
 
-ant* makeAnt(int x, int y, int energy)
-{
+ant* makeAnt(int x, int y, int energy){
 	ant* a = (ant*)calloc(1, sizeof(ant));
 	a->memoryStack = makeStack(MAX_STACKSIZE);
 	a->currentPosition.x = x;
