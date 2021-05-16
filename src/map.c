@@ -25,3 +25,18 @@ void freeMap(map* m){
 	free(m->data);
 	free(m);
 }
+
+
+int getMapData(map* m, int x, int y){
+	if(x > 0 && y > 0 && x < width && y < height){
+		return m->data[x][y];
+	}
+	return -1;
+}
+int setMapData(map* m, int x, int y, int value){
+	if(x > 0 && y > 0 && x < width && y < height){
+		m->data[x][y] = value;
+		return 1;
+	}
+	return 0;
+}
