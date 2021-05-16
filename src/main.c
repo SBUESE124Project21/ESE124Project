@@ -31,17 +31,34 @@ int main(int argc, char *argv[]) {
 		exit(1);
 	}
 	
+	//Load map and instructions
 	map* map = loadMap(mapFile);
 	instructionset* instr = loadInstructionSet(intelligenceFile, 512);
+	node startPosition = getStartPosition(m);
+	ant* a = makeAnt(startPosition->x, startPosition->y, MAX_ENERGY);
 	
-	char* instruction = (char*)calloc(MAX_BUFFERSIZE, sizeof(char));
-	while(instr->position < instr->count){
+	//close files no longer necessary
+	fclose(mapFile);
+	fclose(intelligenceFile);
+	
+	char* instruction = (char*)calloc(MAX_BUFFERSIZE, sizeof(char));	//string to hold instruction
+	while(instr->position < instr->count && ){	//until the end of the instruction set
+		getNextInstruction(instr, instruction);	//read the next instruction into instruction string
 		
+		int action = convertAction(instruction);
 		
-		
+		if(action == C_RP){
+			
+		}
+		else{
+			execute
+		}
 		
 	}
 	
-	
+	free(instruction);
+	freeInstructionset(instr);
+	freeMap(map);
+	fclose(outputFile);
 	return 0;
 }

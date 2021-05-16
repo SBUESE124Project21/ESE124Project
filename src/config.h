@@ -15,7 +15,6 @@
 #define MAX_STACKSIZE 100
 #define MAX_BUFFERSIZE 1024
 
-#define MAX_SIZE 100
 #define MAX_ENERGY 100
 
 #define MARK_ENERGY 3
