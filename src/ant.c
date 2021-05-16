@@ -1,5 +1,20 @@
 #include "ant.h"
 
+ant* makeAnt(int x, int y, int energy)
+{
+	ant* a = (ant*)calloc(1, sizeof(ant));
+	a->memoryStack = makeStack(MAX_STACKSIZE);
+	a->currentPosition.x = x;
+	a->currentPosition.y = y;
+	a->energy = energy;
+	return a;
+}
+void freeAnt(ant* a){
+	freeStack(a->memoryStack);
+	free(a);
+}
+
+
 node pop(ant* a){
 	return a->memoryPosition = spop(a->memoryStack);
 }

@@ -4,5 +4,8 @@
 #define TILE_PHEROMONE '?'
 #define TILE_OUTSIDE '@'
 
+#define MAX_STACKSIZE 100
+
 #define MAX_SIZE 100
 #define MAX_ENERGY 100
+

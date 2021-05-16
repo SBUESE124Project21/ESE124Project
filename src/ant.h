@@ -19,17 +19,18 @@ struct ant{
 	node currentPosition;	// current position
 	node memoryPosition; // memory position
 	
-	
 	int energy; //energy remaining
 	
 	/*direction itch states*/
 	int itchUp;
 	int itchDown;
 	int itchRight;
-	int itchLeft;	
-	
-	int distance; //distance of last measured itch direction
+	int itchLeft;
 };
+
+/* Helper functions */
+ant* makeAnt(int x, int y, int energy);
+void freeAnt(ant* a);
 
 /* Ant specific functions */
 
