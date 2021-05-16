@@ -1,4 +1,6 @@
 #include "stack.h"
+#include "config.h"
+#include "map.h"
 
 #define MARK_ENERGY 3
 #define MOVE_ENERGY 3
@@ -37,10 +39,10 @@ void move_b(ant* a);	//left
 void move_l(ant* a);	//up
 void move_r(ant* a);	//down
 
-int cwf(ant* a);
-int cwb(ant* a);
-int cwl(ant* a);	
-int cwr(ant* a);
+int cwf(map* m, ant* a);
+int cwb(map* m, ant* a);
+int cwl(map* m, ant* a);	
+int cwr(map* m, ant* a);
 
 int bjpi(ant* a);
 int cjpi(ant* a);
@@ -50,7 +52,7 @@ void backtrack(ant* a, int x, int y);
 /* Stack functions */
 node pop(ant* a);
 node peek(ant* a);
-void push(ant* a, node n);
+void push(ant* a);
 void clear(ant* a);
 int empty(ant* a);
 int full(ant* a);

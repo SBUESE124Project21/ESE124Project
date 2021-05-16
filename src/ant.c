@@ -21,21 +21,22 @@ int full(ant* a){
 
 void move_f(ant* a){
 	//right
-	a->x++;
+	a->currentPosition->x++;
 	a->energy -= MOVE_ENERGY;
 }
 void move_b(ant* a){
 	//left
-	a->x--;
+	a->currentPosition->x--;
 	a->energy -= MOVE_ENERGY;
 }
 void move_l(ant* a){
 	//up
-	a->y--;
+	a->currentPosition->y--;
 	a->energy -= MOVE_ENERGY;
 }
 void move_r(ant* a){
 	//down
-	a->y++;
+	a->currentPosition->y++;
 	a->energy -= MOVE_ENERGY;
 }
+
