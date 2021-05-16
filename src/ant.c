@@ -105,6 +105,39 @@ int cwr(map* m, ant* a){	//down
 	}
 }
 
+void bjpi(map* m, ant* a){
+	switch(a->lastCheckDirection){
+		case DIR_RIGHT:
+			if(a->itchRight > 0){
+				a->currentPosition.x += a->itchRight;
+				a->itchRight = 0; 
+				a->energy -= BJPI_ENERGY;
+			}
+			break;
+		case DIR_LEFT:
+			if(a->itchRight > 0){
+				a->currentPosition.x -= a->itchRight;
+				a->itchRight = 0; 
+				a->energy -= BJPI_ENERGY;
+			}
+			break;
+		case DIR_UP:
+			if(a->itchRight > 0){
+				a->currentPosition.y -= a->itchRight;
+				a->itchRight = 0; 
+				a->energy -= BJPI_ENERGY;
+			}
+			break;
+		case DIR_DOWN:
+			if(a->itchRight > 0){
+				a->currentPosition.y += a->itchRight;
+				a->itchRight = 0; 
+				a->energy -= BJPI_ENERGY;
+			}
+			break;
+	}
+}
+
 void mark(map* m, ant* a){
 	setMapData(m, a->currentPosition.x, a->currentPosition.y, TILE_PHEROMONE);
 }
