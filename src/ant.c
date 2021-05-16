@@ -34,27 +34,35 @@ int full(ant* a){
 	return sfull(a->memoryStack);
 }
 
-void move_f(ant* a){
+void move_f(map* m, ant* a){
 	//right
-	a->currentPosition.x++;
-	a->energy -= MOVE_ENERGY;
+	if(x < m->width-1){
+		a->currentPosition.x++;
+		a->energy -= MOVE_ENERGY;
+	}
 }
-void move_b(ant* a){
+void move_b(map* m, ant* a){
 	//left
-	a->currentPosition.x--;
-	a->energy -= MOVE_ENERGY;
+	if(x > 1){
+		a->currentPosition.x--;
+		a->energy -= MOVE_ENERGY;
+	}
 }
-void move_l(ant* a){
+void move_l(map* m, ant* a){
 	//up
-	a->currentPosition.y--;
-	a->energy -= MOVE_ENERGY;
+	
+	if(y < m->height-1){
+		a->currentPosition.y--;
+		a->energy -= MOVE_ENERGY;
+	}
 }
-void move_r(ant* a){
+void move_r(map* m, ant* a){
 	//down
-	a->currentPosition.y++;
-	a->energy -= MOVE_ENERGY;
+	if(y>1){
+		a->currentPosition.y++;
+		a->energy -= MOVE_ENERGY;
+	}
 }
-
 
 int cwf(map* m, ant* a){	//right
 	int positions = 1;

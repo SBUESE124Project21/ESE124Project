@@ -37,10 +37,10 @@ void freeAnt(ant* a);
 /* Ant specific functions */
 
 void mark(map* m, ant* a);
-void move_f(ant* a);	//right
-void move_b(ant* a);	//left
-void move_l(ant* a);	//up
-void move_r(ant* a);	//down
+void move_f(map* m, ant* a);	//right
+void move_b(map* m, ant* a);	//left
+void move_l(map* m, ant* a);	//up
+void move_r(map* m, ant* a);	//down
 
 int cwf(map* m, ant* a);
 int cwb(map* m, ant* a);
