@@ -28,17 +28,13 @@ void freeMap(map* m){
 	free(m);
 }
 
-int getMapData(map* m, node antPosition){
-	int x = m->antOrigin.x + antPosition.x;
-	int y = m->antOrigin.y + antPosition.y;
+int getMapData(map* m, int x, int y){
 	if(x > 0 && y > 0 && x < m->width && y < m->height){
 		return m->data[x][y];
 	}
 	return TILE_OUTSIDE;
 }
-int setMapData(map* m, node antPosition, int value){
-	int x = m->antOrigin.x + antPosition.x;
-	int y = m->antOrigin.y + antPosition.y;
+int setMapData(map* m, int x, int y, int value){
 	if(x > 0 && y > 0 && x < m->width && y < m->height){
 		m->data[x][y] = value;
 		return 1;

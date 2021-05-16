@@ -10,5 +10,5 @@ struct map{
 
 map* makeMap(int width, int height);
 void freeMap(map* m);
-int getMapData(map* m, node antPosition);
-int setMapData(map* m, node antPosition, int value);
+int getMapData(map* m, int x, int y);
+int setMapData(map* m, int x, int y, int value);
