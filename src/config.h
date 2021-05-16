@@ -40,3 +40,5 @@
 #define C_CLEAR 12
 #define C_BJPI 13
 #define C_CJPI 14
+#define C_BACKTRACK 15
+#define C_RP 16

@@ -17,6 +17,45 @@ void freeAnt(ant* a){
 int isAlive(ant* a){
 	return a->energy > 0;
 }
+char* stringToUpper(char* str){
+	int i = 0;
+	for(i = 0; i < strlen(str); i++){
+		str[i] = toupper(str[i]);
+	}
+	return str;
+}
+int convertAction(char* command){
+	char* commands[] = {
+		"MARK",
+		"MOVE_F",
+		"MOVE_B",
+		"MOVE_L",
+		"MOVE_R",
+		"CWF",
+		"CWB",
+		"CWL",
+		"CWR",
+		"PUSH",
+		"POP",
+		"PEEK",
+		"CLEAR",
+		"BJPI",
+		"CJPI",
+		"BACKTRACK",
+		"RP"
+	};
+	
+	char* cm = strtok(command, " ");
+	
+	int i = 0;
+	for(i = 0; i < 17; i++){
+		if(strcmp(commands[i], stringToUpper(cm)) == 0){
+			return i;
+		}
+	}
+	
+}
+
 
 node pop(ant* a){
 	a->memoryPosition = spop(a->memoryStack);

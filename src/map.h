@@ -1,4 +1,5 @@
 #include "stack.h"
+#include <stdio.h>
 typedef struct map map;
 
 struct map{
