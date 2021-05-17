@@ -260,6 +260,9 @@ int cjpi(map* m, ant* a){
 		case DIR_RIGHT:
 			if(a->itchRight > 0){
 				a->currentPosition.x += 1;
+				a->itchUp = 0; 
+				a->itchDown = 0; 
+				a->itchLeft = 0; 
 				a->itchRight = 0; 
 				a->energy -= BJPI_ENERGY;
 				collectGold(m,a);
@@ -268,8 +271,11 @@ int cjpi(map* m, ant* a){
 			return 0;
 			break;
 		case DIR_LEFT:
-			if(a->itchRight > 0){
+			if(a->itchLeft > 0){
 				a->currentPosition.x -= 1;
+				a->itchUp = 0; 
+				a->itchDown = 0; 
+				a->itchLeft = 0; 
 				a->itchRight = 0; 
 				a->energy -= BJPI_ENERGY;
 				collectGold(m,a);
@@ -278,8 +284,11 @@ int cjpi(map* m, ant* a){
 			return 0;
 			break;
 		case DIR_UP:
-			if(a->itchRight > 0){
+			if(a->itchUp > 0){
 				a->currentPosition.y -= 1;
+				a->itchUp = 0; 
+				a->itchDown = 0; 
+				a->itchLeft = 0; 
 				a->itchRight = 0; 
 				a->energy -= BJPI_ENERGY;
 				collectGold(m,a);
@@ -288,8 +297,11 @@ int cjpi(map* m, ant* a){
 			return 0;
 			break;
 		case DIR_DOWN:
-			if(a->itchRight > 0){
+			if(a->itchDown > 0){
 				a->currentPosition.y += 1;
+				a->itchUp = 0; 
+				a->itchDown = 0; 
+				a->itchLeft = 0; 
 				a->itchRight = 0; 
 				a->energy -= BJPI_ENERGY;
 				collectGold(m,a);
