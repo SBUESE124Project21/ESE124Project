@@ -66,7 +66,7 @@ int main(int argc, char *argv[]) {
 						exit(1);
 					}
 					executeAction(map, a, action);			//execute the action
-					fprintf(outputFile, "Executed action '%s'. Position: (%d, %d). Remaining energy: %d", a->energy);
+					fprintf(outputFile, "Executed action '%s'. Position: (%d, %d). Remaining energy: %d\n", instruction ,a->currentPosition.x, a->currentPosition.y, a->energy);
 				}
 				epos = instr->position;					//save the end position so if this is the last loop, we dont end up repeating things one too many times.
 				instr->position = cpos;					//reset the position back to just after the RP to repeat again
@@ -75,7 +75,7 @@ int main(int argc, char *argv[]) {
 		}
 		else{
 			executeAction(map, a, action);				//execute the action if its not rp
-			fprintf(outputFile, "Executed action '%s'. Position: (%d, %d). Remaining energy: %d", a->energy);
+			fprintf(outputFile, "Executed action '%s'. Position: (%d, %d). Remaining energy: %d\n", instruction, a->currentPosition.x, a->currentPosition.y, a->energy);
 		}
 		
 	}

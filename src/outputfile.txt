@@ -1,0 +1,11 @@
+Executed action 'MOVE_L'. Position: (4, 11). Remaining energy: 97
+Executed action 'MOVE_L'. Position: (4, 11). Remaining energy: 94
+Executed action 'MOVE_R'. Position: (4, 12). Remaining energy: 91
+Executed action 'MOVE_L'. Position: (4, 12). Remaining energy: 88
+Executed action 'MOVE_R'. Position: (4, 13). Remaining energy: 85
+Executed action 'MOVE_L'. Position: (4, 13). Remaining energy: 82
+Executed action 'MOVE_R'. Position: (4, 14). Remaining energy: 79
+Executed action 'MOVE_L'. Position: (4, 14). Remaining energy: 76
+Executed action 'MOVE_R'. Position: (4, 15). Remaining energy: 73
+Executed action 'MOVE_L'. Position: (4, 15). Remaining energy: 70
+Executed action 'MOVE_R'. Position: (4, 16). Remaining energy: 67

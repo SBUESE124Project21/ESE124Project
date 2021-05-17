@@ -59,14 +59,14 @@ void move_b(map* m, ant* a){
 void move_l(map* m, ant* a){
 	//up
 	a->energy -= MOVE_ENERGY;
-	if(a->currentPosition.y < m->height-1){
+	if(a->currentPosition.y > 1){
 		a->currentPosition.y--;
 	}
 }
 void move_r(map* m, ant* a){
 	//down
 	a->energy -= MOVE_ENERGY;
-	if(a->currentPosition.y>1){
+	if(a->currentPosition.y < m->height - 1){
 		a->currentPosition.y++;
 	}
 }

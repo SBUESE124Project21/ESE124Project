@@ -1,3 +1,4 @@
+MOVE_L
 RP 2 5
-CWL
-CWR
+MOVE_L
+MOVE_R
