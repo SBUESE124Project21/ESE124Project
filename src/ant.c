@@ -150,7 +150,7 @@ int cwb(map* m, ant* a){	//left
 			return 0;
 		}
 		if(nval == TILE_WALL || nval == TILE_PHEROMONE){
-			a->itchRight = positions-1;
+			a->itchLeft = positions-1;
 			return positions-1;
 		}
 		positions++;
@@ -166,7 +166,7 @@ int cwl(map* m, ant* a){	//up
 			return 0;
 		}
 		if(nval == TILE_WALL || nval == TILE_PHEROMONE){
-			a->itchRight = positions-1;
+			a->itchUp = positions-1;
 			return positions-1;
 		}
 		positions++;
@@ -182,7 +182,7 @@ int cwr(map* m, ant* a){	//down
 			return 0;
 		}
 		if(nval == TILE_WALL || nval == TILE_PHEROMONE){
-			a->itchRight = positions-1;
+			a->itchDown = positions-1;
 			return positions-1;
 		}
 		positions++;
