@@ -28,15 +28,18 @@ int convertAction(char* actionstr){
 		"BACKTRACK",
 		"RP"
 	};
-	
-	char* act = strtok(actionstr, " ");
+	char* buf = (char*)calloc(strlen(actionstr)+1, sizeof(char));
+	strcpy(buf, actionstr);
+	char* act = strtok(buf, " ");
 	
 	int i = 0;
 	for(i = 0; i < 17; i++){
 		if(strcmp(actions[i], stringToUpper(act)) == 0){
+			free(buf);
 			return i;
 		}
 	}
+	free(buf);
 	return -1;
 }
 

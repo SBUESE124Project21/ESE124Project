@@ -2,6 +2,7 @@
 #include "config.h"
 #include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
 instructionset* makeInstructionset(int maxCount){
 	instructionset* ins = (instructionset*)calloc(1, sizeof(instructionset));
 	ins->instructions = (char**)calloc(maxCount, sizeof(char*));
@@ -11,6 +12,16 @@ instructionset* makeInstructionset(int maxCount){
 	return ins;
 }
 
+char* removeTrailingReturn(char* str){
+	char* ptr = str;
+	while(*ptr != '\0'){
+		if(*ptr == '\r' || *ptr=='\n'){
+			*ptr = '\0';
+		}
+		ptr++;
+	}
+	return ptr;
+}
 instructionset* loadInstructionSet(FILE* instructionFile, int max){
 	instructionset* ins = makeInstructionset(max);
 	char* buf = (char*)calloc(MAX_BUFFERSIZE, sizeof(char));
@@ -30,6 +41,7 @@ void freeInstructionset(instructionset* instr){
 }
 
 void addInstruction(instructionset* i, char* instruction){
+	removeTrailingReturn(instruction);
 	if(i->count < i->maxCount){
 		char* newins = (char*)calloc(strlen(instruction)+1, sizeof(char));
 		strcpy(newins, instruction);

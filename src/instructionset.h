@@ -9,7 +9,7 @@ struct instructionset{
 	int count;
 	int maxCount;
 };
-
+char* removeTrailingReturn(char* str);
 instructionset* makeInstructionset(int maxCount);
 instructionset* loadInstructionSet(FILE* instructionFile, int max);
 void freeInstructionset(instructionset* i);
