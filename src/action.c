@@ -1,5 +1,7 @@
 #include "action.h"
 #include <string.h>
+#include <stdlib.h>
+
 char* stringToUpper(char* str){
 	int i = 0;
 	for(i = 0; i < strlen(str); i++){

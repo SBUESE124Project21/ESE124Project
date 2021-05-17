@@ -49,7 +49,6 @@ int main(int argc, char *argv[]) {
 		getNextInstruction(instr, instruction);	//read the next instruction into instruction string
 		
 		int action = convertAction(instruction); //convert the string to an int
-		printf("Action %s is %d\n", instruction, action);
 		if(action == C_RP){						// if its RP n t, then deal with it separately
 			int j,k;
 			char s[10];
@@ -62,12 +61,12 @@ int main(int argc, char *argv[]) {
 				for(j = 0; j < n; j++){					//execute the next n instructions
 					getNextInstruction(instr, instruction);	//get the instruction
 					action = convertAction(instruction);	//convert it
-					printf("repeated Action %s is %d\n", instruction, action);
 					if(action == -1){
 						fprintf(outputFile, "Error: Illegal action number %d: '%s'.", instr->position, instruction);
 						exit(1);
 					}
 					executeAction(map, a, action);			//execute the action
+					fprintf(outputFile, "Executed action '%s'. Position: (%d, %d). Remaining energy: %d", a->energy);
 				}
 				epos = instr->position;					//save the end position so if this is the last loop, we dont end up repeating things one too many times.
 				instr->position = cpos;					//reset the position back to just after the RP to repeat again
@@ -76,6 +75,7 @@ int main(int argc, char *argv[]) {
 		}
 		else{
 			executeAction(map, a, action);				//execute the action if its not rp
+			fprintf(outputFile, "Executed action '%s'. Position: (%d, %d). Remaining energy: %d", a->energy);
 		}
 		
 	}
