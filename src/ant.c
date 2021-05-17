@@ -7,6 +7,7 @@ ant* makeAnt(int x, int y, int energy){
 	a->currentPosition.x = x;
 	a->currentPosition.y = y;
 	a->energy = energy;
+	a->collectedGold = 0;
 	return a;
 }
 void freeAnt(ant* a){

@@ -19,7 +19,7 @@ struct ant{
 	int itchRight;
 	int itchLeft;
 	
-	int consumedEnergy;
+	int collectedGold;
 	int lastCheckDirection; // last direction checked
 };
 
