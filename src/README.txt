@@ -1,3 +1,6 @@
+Amar Persaud
+Volodymyr Brusak
+
 Virtual ant
 
 ant.h and ant.c
