@@ -52,18 +52,32 @@ void collectGoldOnJump(map* m, ant* a, node startPosition, node endPosition){
 }
 
 node pop(ant* a){
+	if(empty(a)){
+		node n;
+		n.x = -1;
+		n.y = -1;
+		return n;
+	}
 	a->memoryPosition = spop(a->memoryStack);
 	a->energy -= PUSH_POP_ENERGY;
 	return a->memoryPosition;
 }
 node peek(ant* a){
+	if(empty(a)){
+		node n;
+		n.x = -1;
+		n.y = -1;
+		return n;
+	}
 	a->memoryPosition = speek(a->memoryStack);
 	a->energy -= PEEK_CLEAR_ENERGY;
 	return a->memoryPosition;
 }
 void push(ant* a){
-	a->energy -= PUSH_POP_ENERGY;
-	spush(a->memoryStack, a->currentPosition);
+	if(!scontains(a->memoryStack, a->currentPosition)){
+		a->energy -= PUSH_POP_ENERGY;
+		spush(a->memoryStack, a->currentPosition);
+	}
 }
 void clear(ant* a){
 	a->energy -= PEEK_CLEAR_ENERGY;

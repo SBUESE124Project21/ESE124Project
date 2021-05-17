@@ -29,7 +29,15 @@ node speek(stack* s){
 		return n;
 	}
 }
-
+int scontains(stack* s, node n){
+	int i = 0;
+	for(i = 0; i < s->count; i++){
+		if(s->array[i].x == n.x && s->array[i].y == n.y){
+			return 1;
+		}
+	}
+	return 0;
+}
 int spush(stack* s, node n){
 	if(s->count < s->maxSize){
 		s->array[s->count] = n;

@@ -14,6 +14,7 @@ struct map{
 map* makeMap(int width, int height);
 void freeMap(map* m);
 map* loadMap(FILE* mapfile);
+void printMapWithAnt(map* m, int x, int y, FILE* outputFile);
 
 node getStartPosition(map* m);
 void printMap(map* m, FILE* outputFile);

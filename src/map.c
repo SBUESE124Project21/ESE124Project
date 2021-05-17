@@ -62,9 +62,20 @@ void printMap(map* m, FILE* outputFile){
 		}
 		fprintf(outputFile, "\n");
 	}
-	
 }
-
+void printMapWithAnt(map* m, int x, int y, FILE* outputFile){
+	int ix = 0;
+	int iy = 0;
+	int oldchar = getMapData(m, x,y);
+	setMapData(m, x, y, (int)'a');
+	for(iy = 0; iy < m->height; iy++){
+		for(ix = 0; ix < m->width; ix++){
+			fprintf(outputFile, "%c", (char)getMapData(m, ix, iy));
+		}
+		fprintf(outputFile,"\n");
+	}
+	setMapData(m, x, y, oldchar);
+}
 map* loadMap(FILE* mapfile){
 	char* buf = (char*)calloc(MAX_BUFFERSIZE, sizeof(char));
 	
