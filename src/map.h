@@ -16,6 +16,7 @@ void freeMap(map* m);
 map* loadMap(FILE* mapfile);
 
 node getStartPosition(map* m);
+void printMap(map* m, FILE* outputFile);
 
 int getMapData(map* m, int x, int y);
 int setMapData(map* m, int x, int y, int value);

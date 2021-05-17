@@ -1,6 +1,7 @@
 #include "map.h"
 #include "config.h"
 #include <stdlib.h>
+#include <stdio.h>
 #include <ctype.h>
 #include <string.h>
 
@@ -51,6 +52,18 @@ node getStartPosition(map* m){
 	}
 	return a;
 }
+void printMap(map* m, FILE* outputFile){
+	int x = 0;
+	int y = 0;
+	
+	for(y = 0; y < m->height; y++){
+		for(x = 0; x < m->width; x++){
+			fprintf(outputFile, "%c", (char)getMapData(m, x, y));
+		}
+		fprintf(outputFile, "\n");
+	}
+	
+}
 
 map* loadMap(FILE* mapfile){
 	char* buf = (char*)calloc(MAX_BUFFERSIZE, sizeof(char));
@@ -81,13 +94,13 @@ map* loadMap(FILE* mapfile){
 }
 
 int getMapData(map* m, int x, int y){
-	if(x > 0 && y > 0 && x < m->width && y < m->height){
+	if(x >= 0 && y >= 0 && x < m->width && y < m->height){
 		return m->data[x][y];
 	}
 	return TILE_OUTSIDE;
 }
 int setMapData(map* m, int x, int y, int value){
-	if(x > 0 && y > 0 && x < m->width && y < m->height){
+	if(x >= 0 && y >= 0 && x < m->width && y < m->height){
 		m->data[x][y] = value;
 		return 1;
 	}

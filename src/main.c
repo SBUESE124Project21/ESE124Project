@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
 		exit(1);
 	}
 	ant* a = makeAnt(startPosition.x, startPosition.y, MAX_ENERGY);
-	
+	printMap(map, outputFile);
 	//close files no longer necessary
 	fclose(mapFile);
 	fclose(intelligenceFile);
@@ -49,7 +49,11 @@ int main(int argc, char *argv[]) {
 		getNextInstruction(instr, instruction);	//read the next instruction into instruction string
 		
 		int action = convertAction(instruction); //convert the string to an int
-		if(action == C_RP){						// if its RP n t, then deal with it separately
+		if(action == -1){
+			fprintf(outputFile, "Error: Illegal action number %d: '%s'.", instr->position, instruction);
+			exit(1);
+		}
+		else if(action == C_RP){						// if its RP n t, then deal with it separately
 			int j,k;
 			char s[10];
 			int n;
@@ -57,8 +61,9 @@ int main(int argc, char *argv[]) {
 			int cpos = instr->position;
 			int epos;
 			sscanf(instruction, "%s %d %d", s, &n, &t);	// read the n and t values from the instruction
-			for(k = 0; k < t; k++){						// t times
-				for(j = 0; j < n; j++){					//execute the next n instructions
+			for(k = 0; k < t && isAlive(a); k++){						// t times
+				for(j = 0; j < n && isAlive(a); j++){					//execute the next n instructions
+					
 					getNextInstruction(instr, instruction);	//get the instruction
 					action = convertAction(instruction);	//convert it
 					if(action == -1){
@@ -66,7 +71,7 @@ int main(int argc, char *argv[]) {
 						exit(1);
 					}
 					executeAction(map, a, action);			//execute the action
-					fprintf(outputFile, "Executed action '%s'. Position: (%d, %d). Remaining energy: %d\n", instruction ,a->currentPosition.x, a->currentPosition.y, a->energy);
+					fprintf(outputFile, "Executed action '%s'. Position: (%d, %d). Remaining energy: %d. Collected gold: %d\n", instruction ,a->currentPosition.x, a->currentPosition.y, a->energy, a->collectedGold);
 				}
 				epos = instr->position;					//save the end position so if this is the last loop, we dont end up repeating things one too many times.
 				instr->position = cpos;					//reset the position back to just after the RP to repeat again
@@ -75,7 +80,7 @@ int main(int argc, char *argv[]) {
 		}
 		else{
 			executeAction(map, a, action);				//execute the action if its not rp
-			fprintf(outputFile, "Executed action '%s'. Position: (%d, %d). Remaining energy: %d\n", instruction, a->currentPosition.x, a->currentPosition.y, a->energy);
+			fprintf(outputFile, "Executed action '%s'. Position: (%d, %d). Remaining energy: %d. Collected gold: %d\n", instruction, a->currentPosition.x, a->currentPosition.y, a->energy, a->collectedGold);
 		}
 		
 	}

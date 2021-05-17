@@ -18,6 +18,39 @@ void freeAnt(ant* a){
 int isAlive(ant* a){
 	return a->energy > 0;
 }
+
+void collectGold(map* m, ant* a){
+	int t = getMapData(m, a->currentPosition.x, a->currentPosition.y);
+	if(t == TILE_GOLD){
+		a->collectedGold++;
+		setMapData(m, a->currentPosition.x, a->currentPosition.y, TILE_SPACE);
+	}
+}
+void collectGoldOnJump(map* m, ant* a, node startPosition, node endPosition){
+	int x = startPosition.x;
+	int y = startPosition.y;
+	if(startPosition.x == endPosition.x){
+		int direction = (endPosition.y - startPosition.y) > 0 ? 1 : -1;
+		for(y = startPosition.y; y <= endPosition.y; y += direction){
+			int t = getMapData(m, x, y);
+			if(t == TILE_GOLD){
+				a->collectedGold++;
+				setMapData(m, a->currentPosition.x, a->currentPosition.y, TILE_SPACE);
+			}	
+		}
+	}
+	else if (startPosition.y == endPosition.y){
+		int direction = (endPosition.x - startPosition.x) > 0 ? 1 : -1;
+		for(x = startPosition.x; x <= endPosition.x; x += direction){
+			int t = getMapData(m, x, y);
+			if(t == TILE_GOLD){
+				a->collectedGold++;
+				setMapData(m, x, y, TILE_SPACE);
+			}	
+		}
+	}
+}
+
 node pop(ant* a){
 	a->memoryPosition = spop(a->memoryStack);
 	a->energy -= PUSH_POP_ENERGY;
@@ -43,11 +76,13 @@ int full(ant* a){
 	return sfull(a->memoryStack);
 }
 
+
 void move_f(map* m, ant* a){
 	//right
 	a->energy -= MOVE_ENERGY;
 	if(a->currentPosition.x < m->width-1){
 		a->currentPosition.x++;
+		collectGold(m, a);
 	}
 }
 void move_b(map* m, ant* a){
@@ -55,6 +90,7 @@ void move_b(map* m, ant* a){
 	a->energy -= MOVE_ENERGY;
 	if(a->currentPosition.x > 1){
 		a->currentPosition.x--;
+		collectGold(m, a);
 	}
 }
 void move_l(map* m, ant* a){
@@ -62,6 +98,7 @@ void move_l(map* m, ant* a){
 	a->energy -= MOVE_ENERGY;
 	if(a->currentPosition.y > 1){
 		a->currentPosition.y--;
+		collectGold(m, a);
 	}
 }
 void move_r(map* m, ant* a){
@@ -69,6 +106,7 @@ void move_r(map* m, ant* a){
 	a->energy -= MOVE_ENERGY;
 	if(a->currentPosition.y < m->height - 1){
 		a->currentPosition.y++;
+		collectGold(m, a);
 	}
 }
 
@@ -109,7 +147,7 @@ int cwl(map* m, ant* a){	//up
 	a->energy -= CHECK_ENERGY;
 	a->lastCheckDirection = DIR_UP;
 	while(1){
-		int nval = getMapData(m, a->currentPosition.x, a->currentPosition.y+positions);
+		int nval = getMapData(m, a->currentPosition.x, a->currentPosition.y-positions);
 		if(nval == TILE_OUTSIDE){
 			return 0;
 		}
@@ -125,7 +163,7 @@ int cwr(map* m, ant* a){	//down
 	a->energy -= CHECK_ENERGY;
 	a->lastCheckDirection = DIR_DOWN;
 	while(1){
-		int nval = getMapData(m, a->currentPosition.x, a->currentPosition.y-positions);
+		int nval = getMapData(m, a->currentPosition.x, a->currentPosition.y+positions);
 		if(nval == TILE_OUTSIDE){
 			return 0;
 		}
@@ -137,11 +175,13 @@ int cwr(map* m, ant* a){	//down
 	}
 }
 
-int bjpi(ant* a){
+int bjpi(map* m, ant* a){
 	switch(a->lastCheckDirection){
 		case DIR_RIGHT:
 			if(a->itchRight > 0){
+				node start = a->currentPosition;
 				a->currentPosition.x += a->itchRight;
+				node end = a->currentPosition;
 				a->itchRight = 0; 
 				a->itchDown = 0;  
 				a->itchLeft = 0;  
@@ -153,7 +193,10 @@ int bjpi(ant* a){
 			break;
 		case DIR_LEFT:
 			if(a->itchRight > 0){
+				node start = a->currentPosition;
 				a->currentPosition.x -= a->itchLeft;
+				node end = a->currentPosition;
+				collectGoldOnJump(m, a, start, end);
 				a->itchRight = 0; 
 				a->itchDown = 0;  
 				a->itchLeft = 0;  
@@ -165,7 +208,10 @@ int bjpi(ant* a){
 			break;
 		case DIR_UP:
 			if(a->itchRight > 0){
+				node start = a->currentPosition;
 				a->currentPosition.y -= a->itchUp;
+				node end = a->currentPosition;
+				collectGoldOnJump(m, a, start, end);
 				a->itchRight = 0; 
 				a->itchDown = 0;  
 				a->itchLeft = 0;  
@@ -177,7 +223,10 @@ int bjpi(ant* a){
 			break;
 		case DIR_DOWN:
 			if(a->itchRight > 0){
+				node start = a->currentPosition;
 				a->currentPosition.y += a->itchDown;
+				node end = a->currentPosition;
+				collectGoldOnJump(m, a, start, end);
 				a->itchRight = 0; 
 				a->itchDown = 0;  
 				a->itchLeft = 0;  
@@ -192,13 +241,14 @@ int bjpi(ant* a){
 	}
 }
 
-int cjpi(ant* a){
+int cjpi(map* m, ant* a){
 	switch(a->lastCheckDirection){
 		case DIR_RIGHT:
 			if(a->itchRight > 0){
 				a->currentPosition.x += 1;
 				a->itchRight = 0; 
 				a->energy -= BJPI_ENERGY;
+				collectGold(m,a);
 				return 1;
 			}
 			return 0;
@@ -208,6 +258,7 @@ int cjpi(ant* a){
 				a->currentPosition.x -= 1;
 				a->itchRight = 0; 
 				a->energy -= BJPI_ENERGY;
+				collectGold(m,a);
 				return 1;
 			}
 			return 0;
@@ -217,6 +268,7 @@ int cjpi(ant* a){
 				a->currentPosition.y -= 1;
 				a->itchRight = 0; 
 				a->energy -= BJPI_ENERGY;
+				collectGold(m,a);
 				return 1;
 			}
 			return 0;
@@ -226,6 +278,7 @@ int cjpi(ant* a){
 				a->currentPosition.y += 1;
 				a->itchRight = 0; 
 				a->energy -= BJPI_ENERGY;
+				collectGold(m,a);
 				return 1;
 			}
 			return 0;

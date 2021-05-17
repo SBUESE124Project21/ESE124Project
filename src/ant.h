@@ -27,6 +27,8 @@ struct ant{
 ant* makeAnt(int x, int y, int energy);
 void freeAnt(ant* a);
 int isAlive(ant* a);
+void collectGold(map* m, ant* a);
+void collectGoldOnJump(map* m, ant* a, node startPosition, node endPosition);
 
 /* Ant specific functions */
 
@@ -41,8 +43,8 @@ int cwb(map* m, ant* a);
 int cwl(map* m, ant* a);	
 int cwr(map* m, ant* a);
 
-int bjpi(ant* a);
-int cjpi(ant* a);
+int bjpi(map* m, ant* a);
+int cjpi(map* m, ant* a);
 
 void backtrack(ant* a);
 

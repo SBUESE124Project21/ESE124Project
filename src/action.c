@@ -87,10 +87,10 @@ int executeAction(map* m, ant* a, int action){
 			clear(a);
 			break;
 		case C_BJPI:
-			bjpi(a);
+			bjpi(m,a);
 			break;
 		case C_CJPI:
-			cjpi(a);
+			cjpi(m,a);
 			break;
 		case C_BACKTRACK:
 			backtrack(a);
