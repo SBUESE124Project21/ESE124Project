@@ -1,6 +1,7 @@
-Amar Persaud
-Volodymyr Brusak
-Aleksandr Karamanov
+Group:
+	Amar Persaud
+	Volodymyr Brusak
+	Aleksandr Karamanov
 
 Virtual ant
 
